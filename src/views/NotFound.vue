@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue"
+import { ref } from "vue"
 import UIMain from "@/components/UI/Main/index.vue"
 const Error = ref()
 const isError = ref(false)

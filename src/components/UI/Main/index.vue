@@ -29,8 +29,10 @@ const props = defineProps({
     <div class="row">
       <div class="col-12 col-md-9">
 
-        <UIMainFeed  :error="Error" :isError="isError" :isLoading="isLoading" title="Categoría">
-          <slot></slot>
+        <UIMainFeed :error="props.error" :isError="props.isError" :isLoading="props.isLoading" :title="props.title">
+          <TransitionGroup>
+            <slot></slot>
+          </TransitionGroup>
         </UIMainFeed>
 
       </div>
