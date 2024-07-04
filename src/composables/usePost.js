@@ -1,11 +1,10 @@
 import { HTTP } from "@/utils/fakeDB"
-console.log("🚀 ~ HTTP:", HTTP())
 
 export default () => {
   const GetAllPosts = async (options) => {
     const { limit = 10, page = 0 } = options
 
-    const items = HTTP()
+    const items = await HTTP()
       .then(async (response) => {
         return response.posts
           .filter(e => e.status === "public")
