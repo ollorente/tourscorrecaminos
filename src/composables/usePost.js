@@ -1,4 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
+import { Post, RefPost } from "@/interfcaces/post.interface"
 
 export default () => {
   const GetAllPosts = async (options) => {
@@ -7,27 +8,19 @@ export default () => {
     const items = await HTTP()
       .then(async (response) => {
         return response.posts
-          .filter(e => e.status === "public")
+          .filter(e => e.post_type === "post")
+          .filter(e => e.post_status === "publish")
           .sort(function (a, b) {
-            if (a.order > b.order) {
+            if (a.menuOrder > b.menuOrder) {
               return 1
             }
-            if (a.order < b.order) {
+            if (a.menuOrder < b.menuOrder) {
               return -1
             }
             return 0
           })
           .splice(page, limit)
-          .map(e => {
-            return {
-              id: e.id,
-              title: e.title,
-              excerpt: e.excerpt,
-              status: e.status,
-              order: e.order,
-              mimeType: e.mimeType,
-            }
-          })
+          .map(e => RefPost(e))
       })
 
     return items
@@ -36,8 +29,8 @@ export default () => {
   const GetOnePost = async (id) => {
     const item = await HTTP()
       .then(async (response) => {
-        const item = await response.posts.find((e) => e.id === id)
-        return item
+        const item = await response.posts.find((e) => e.ID === id)
+        return Post(item)
       })
 
     return item
