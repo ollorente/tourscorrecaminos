@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps } from "vue"
 import UIMainAside from "@/components/UI/Main/Aside/index.vue"
 import UIMainFeed from "@/components/UI/Main/Feed.vue"
 
