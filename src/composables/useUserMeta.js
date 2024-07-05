@@ -1,4 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
+import { UserMeta, RefUserMeta } from "@/interfcaces/userMeta.interface"
 
 export default () => {
   const GetAllUserMetas = async (options) => {
@@ -17,14 +18,7 @@ export default () => {
             return 0
           })
           .splice(page, limit)
-          .map(e => {
-            return {
-              id: e.id,
-              userId: e.userId,
-              key: e.key,
-              value: e.value,
-            }
-          })
+          .map(e => RefUserMeta(e))
       })
 
     return items
@@ -34,7 +28,7 @@ export default () => {
     const item = await HTTP()
       .then(async (response) => {
         const item = await response.userMetas.find((e) => e.id === id)
-        return item
+        return UserMeta(item)
       })
 
     return item

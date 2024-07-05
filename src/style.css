@@ -76,3 +76,8 @@
 .v-leave-to {
   opacity: 0;
 }
+
+.navbar-toggler:focus {
+  border: 0;
+  outline: 0;
+}

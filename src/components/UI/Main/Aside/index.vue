@@ -1,9 +1,27 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue"
+const Error = ref()
+const isError = ref(false)
+const isLoading = ref(false)
+const item = ref({})
+
+const sendInfo = async () => {
+  isLoading.value = true
+
+  try {
+  } catch (error) {
+    isError.value = true
+    Error.value = error
+  } finally {
+    isLoading.value = false
+  }
+}
+</script>
 
 <template>
   <aside class="bg-light rounded p-3">
-    <h4 class="h5 text-center text-uppercase fw-bold py-3">Turismo<br>"A la Carta"<br>por Colombia</h4>
-    <form>
+    <h4 class="h5 text-center text-uppercase fw-bold py-3">Turismo "A la Carta"<br>por Colombia</h4>
+    <form @submit.prevent="sendInfo">
       <div class="form-group py-1">
         <label for="FormControlInput1" class="text-uppercase small fw-bold mb-1">Nombre<b> *</b></label>
         <input type="text" class="form-control" id="FormControlInput1" placeholder="Nombre">

@@ -1,4 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
+import { PostMeta, RefPostMeta } from "@/interfcaces/postMeta.interface"
 
 export default () => {
   const GetAllPostMetas = async (options) => {
@@ -17,14 +18,7 @@ export default () => {
             return 0
           })
           .splice(page, limit)
-          .map(e => {
-            return {
-              id: e.id,
-              postId: e.postId,
-              key: e.key,
-              value: e.value,
-            }
-          })
+          .map(e => RefPostMeta(e))
       })
 
     return items
@@ -34,7 +28,7 @@ export default () => {
     const item = await HTTP()
       .then(async (response) => {
         const item = await response.postMetas.find((e) => e.id === id)
-        return item
+        return PostMeta(item)
       })
 
     return item

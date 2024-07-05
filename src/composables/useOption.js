@@ -1,4 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
+import { Option, RefOption } from "@/interfcaces/option.interface"
 
 export default () => {
   const GetAllOptions = async (options) => {
@@ -17,15 +18,7 @@ export default () => {
             return 0
           })
           .splice(page, limit)
-          .map(e => {
-            return {
-              id: e.id,
-              blogId: e.blogId,
-              name: e.name,
-              value: e.value,
-              autoload: e.autoload,
-            }
-          })
+          .map(e => RefOption(e))
       })
 
     return items
@@ -35,7 +28,7 @@ export default () => {
     const item = await HTTP()
       .then(async (response) => {
         const item = await response.options.find((e) => e.id === id)
-        return item
+        return Option(item)
       })
 
     return item

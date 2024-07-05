@@ -1,4 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
+import { User, RefUser } from "@/interfcaces/user.interface"
 
 export default () => {
   const GetAllUsers = async (options) => {
@@ -17,14 +18,7 @@ export default () => {
             return 0
           })
           .splice(page, limit)
-          .map(e => {
-            return {
-              id: e.id,
-              nicename: e.nicename,
-              url: e.url,
-              displayName: e.displayName,
-            }
-          })
+          .map(e => RefUser(e))
       })
 
     return items
@@ -34,7 +28,7 @@ export default () => {
     const item = await HTTP()
       .then(async (response) => {
         const item = await response.users.find((e) => e.id === id)
-        return item
+        return User(item)
       })
 
     return item

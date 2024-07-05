@@ -6,7 +6,7 @@ defineProps(["item"])
   <RouterLink :to="{ name: 'Post', params: { id: item.id } }" class="text-decoration-none">
     <div class="card text-dark border-0 mb-4">
       <div class="ratio ratio-4x3">
-        <img :src="item.mimeType ? item.mimeType : './img/no-item-found-flat-concept-vector.jpg'"
+        <img :src="item.mime_type ? item.mime_type : './img/no-item-found-flat-concept-vector.jpg'"
           class="w-100 h-100 object-fit-cover" :alt="item.title">
       </div>
       <div class="card-body px-0">

@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, onBeforeRouteUpdate } from 'vue-router'
 
 const routes = [
   {
@@ -36,6 +36,11 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+})
+
+onBeforeRouteUpdate(async (to, from) => {
+  // react to route changes...
+  userData.value = await fetchUser(to.params.id)
 })
 
 export default router

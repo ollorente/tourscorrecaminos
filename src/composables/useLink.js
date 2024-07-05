@@ -1,4 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
+import { Link, RefLink } from "@/interfcaces/link.interface"
 
 export default () => {
   const GetAllLinks = async (options) => {
@@ -17,14 +18,7 @@ export default () => {
             return 0
           })
           .splice(page, limit)
-          .map(e => {
-            return {
-              id: e.id,
-              url: e.url,
-              name: e.name,
-              image: e.image,
-            }
-          })
+          .map(e => RefLink(e))
       })
 
     return items
@@ -34,7 +28,7 @@ export default () => {
     const item = await HTTP()
       .then(async (response) => {
         const item = await response.links.find((e) => e.id === id)
-        return item
+        return Link(item)
       })
 
     return item

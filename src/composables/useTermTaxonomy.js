@@ -1,4 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
+import { TermTaxonomy, RefTermTaxonomy } from "@/interfcaces/termTaxonomy.interface"
 
 export default () => {
   const GetAllTermTaxonomies = async (options) => {
@@ -17,15 +18,7 @@ export default () => {
             return 0
           })
           .splice(page, limit)
-          .map(e => {
-            return {
-              id: e.id,
-              termId: e.termId,
-              taxonomy: e.taxonomy,
-              parent: e.parent,
-              count: e.count,
-            }
-          })
+          .map(e => RefTermTaxonomy(e))
       })
 
     return items
@@ -35,7 +28,7 @@ export default () => {
     const item = await HTTP()
       .then(async (response) => {
         const item = await response.termTaxonomies.find((e) => e.id === id)
-        return item
+        return TermTaxonomy(item)
       })
 
     return item

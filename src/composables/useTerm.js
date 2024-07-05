@@ -1,4 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
+import { Term, RefTerm } from "@/interfcaces/term.interface"
 
 export default () => {
   const GetAllTerms = async (options) => {
@@ -17,13 +18,7 @@ export default () => {
             return 0
           })
           .splice(page, limit)
-          .map(e => {
-            return {
-              id: e.id,
-              name: e.name,
-              slug: e.slug,
-            }
-          })
+          .map(e => RefTerm(e))
       })
 
     return items
@@ -33,7 +28,7 @@ export default () => {
     const item = await HTTP()
       .then(async (response) => {
         const item = await response.terms.find((e) => e.id === id)
-        return item
+        return Term(item)
       })
 
     return item

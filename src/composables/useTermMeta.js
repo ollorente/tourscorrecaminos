@@ -1,4 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
+import { TermMeta, RefTermMeta } from "@/interfcaces/termMeta.interface"
 
 export default () => {
   const GetAllTermMetas = async (options) => {
@@ -17,13 +18,7 @@ export default () => {
             return 0
           })
           .splice(page, limit)
-          .map(e => {
-            return {
-              id: e.id,
-              name: e.name,
-              slug: e.slug,
-            }
-          })
+          .map(e => RefTermMeta(e))
       })
 
     return items
@@ -33,7 +28,7 @@ export default () => {
     const item = await HTTP()
       .then(async (response) => {
         const item = await response.termMetas.find((e) => e.id === id)
-        return item
+        return TermMeta(item)
       })
 
     return item

@@ -1,4 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
+import { TermRelationship, ReftermRelationship } from "@/interfcaces/termRelationship.interface"
 
 export default () => {
   const GetAllTermRelationships = async (options) => {
@@ -17,13 +18,7 @@ export default () => {
             return 0
           })
           .splice(page, limit)
-          .map(e => {
-            return {
-              id: e.id,
-              termTaxonomyId: e.termTaxonomyId,
-              termOrder: e.termOrder,
-            }
-          })
+          .map(e => ReftermRelationship(e))
       })
 
     return items
@@ -33,7 +28,7 @@ export default () => {
     const item = await HTTP()
       .then(async (response) => {
         const item = await response.termRelationships.find((e) => e.id === id)
-        return item
+        return TermRelationship(item)
       })
 
     return item

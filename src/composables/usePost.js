@@ -23,8 +23,8 @@ export default () => {
           .map(e => RefPost(e))
       })
 
-    return items
-  }
+      return items
+    }
 
   const GetOnePost = async (id) => {
     const item = await HTTP()

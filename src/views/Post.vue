@@ -16,6 +16,7 @@ const getItem = async () => {
 
   try {
     const data = await GetOnePost(ID)
+    console.log("🚀 ~ getItem ~ data:", data)
 
     item.value = data
   } catch (error) {
@@ -32,12 +33,17 @@ onMounted(() => getItem())
 <template>
   <div class="mb-4 slice-top">
     <UIMain :error="Error" :isError="isError" :isLoading="isLoading" title="Destino" class="main-height">
-      <h1 class="fw-semibold mb-3">{{ item.title }}</h1>
-      <div class="ratio ratio-16x9 mb-3">
-        <img :src="item.mimeType" :alt="item.title" class="img-fluid rounded">
-      </div>
-      <div class="py-1">{{ item.excerpt }}</div>
-      <div class="py-1" v-html="item.content"></div>
+      <Transition v-if="item">
+        <div class="">
+          <h1 class="h2 fw-semibold mb-3">{{ item.title }}</h1>
+          <div class="ratio ratio-16x9 mb-3">
+            <img :src="item.mime_type ? item.mime_type : './img/no-item-found-flat-concept-vector.jpg'"
+              class="w-100 h-100 object-fit-cover" :alt="item.title">
+          </div>
+          <div class="py-1">{{ item.excerpt }}</div>
+          <div class="py-1" v-html="item.content"></div>
+        </div>
+      </Transition>
       <pre hidden>{{ item }}</pre>
     </UIMain>
   </div>

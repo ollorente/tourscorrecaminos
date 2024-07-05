@@ -1,4 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
+import { Comment, RefComment } from "@/interfcaces/comment.interface"
 
 export default () => {
   const GetAllComments = async (options) => {
@@ -17,17 +18,7 @@ export default () => {
             return 0
           })
           .splice(page, limit)
-          .map(e => {
-            return {
-              id: e.id,
-              postId: e.postId,
-              author: e.author,
-              authorUrl: e.authorUrl,
-              date: e.date,
-              content: e.content,
-              userId: e.userId,
-            }
-          })
+          .map(e => RefComment(e))
       })
 
     return items
@@ -37,7 +28,7 @@ export default () => {
     const item = await HTTP()
       .then(async (response) => {
         const item = await response.comments.find((e) => e.id === id)
-        return item
+        return Comment(item)
       })
 
     return item

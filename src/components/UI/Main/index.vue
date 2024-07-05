@@ -26,7 +26,7 @@ const props = defineProps({
   <main class="container">
 
     <div class="row">
-      <div class="col-12 col-md-9">
+      <div class="col-12 col-md-8  col-xl-9">
 
         <UIMainFeed :error="props.error" :isError="props.isError" :isLoading="props.isLoading" :title="props.title">
           <TransitionGroup>
@@ -35,7 +35,7 @@ const props = defineProps({
         </UIMainFeed>
 
       </div>
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-md-4  col-xl-3">
 
         <UIMainAside />
 

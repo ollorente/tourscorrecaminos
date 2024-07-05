@@ -1,4 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
+import { CommentMeta, RefCommentMeta } from "@/interfcaces/commentMeta.interface"
 
 export default () => {
   const GetAllCommentMetas = async (options) => {
@@ -17,14 +18,7 @@ export default () => {
             return 0
           })
           .splice(page, limit)
-          .map(e => {
-            return {
-              id: e.id,
-              commentId: e.commentId,
-              key: e.key,
-              value: e.value,
-            }
-          })
+          .map(e => RefCommentMeta(e))
       })
 
     return items
@@ -34,7 +28,7 @@ export default () => {
     const item = await HTTP()
       .then(async (response) => {
         const item = await response.commentMetas.find((e) => e.id === id)
-        return item
+        return CommentMeta(item)
       })
 
     return item

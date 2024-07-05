@@ -80,7 +80,7 @@ const getFiveItems = async () => {
   isLoading.value = true
 
   try {
-    const data = await GetAllPosts({ limit: 3, page: page.value })
+    const data = await GetAllPosts({ limit: 2, page: page.value })
 
     itemsFive.value = data
   } catch (error) {
@@ -163,7 +163,7 @@ onMounted(() => {
         <UIMainFeed :error="Error" :isError="isError" :isLoading="isLoading" title="Mensajería">
 
           <div class="row">
-            <div v-for="item in itemsFive" :key="item.id" class="col-12 col-md-4">
+            <div v-for="item in itemsFive" :key="item.id" class="col-12 col-md-6">
               <UIMainCard :item="item" />
             </div>
           </div>
