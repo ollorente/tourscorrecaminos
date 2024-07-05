@@ -1,5 +1,5 @@
 import { HTTP } from "@/utils/fakeDB"
-import { TermRelationship, ReftermRelationship } from "@/interfcaces/termRelationship.interface"
+import { TermRelationship, RefTermRelationship } from "@/interfcaces/termRelationship.interface"
 
 export default () => {
   const GetAllTermRelationships = async (options) => {
@@ -18,7 +18,7 @@ export default () => {
             return 0
           })
           .splice(page, limit)
-          .map(e => ReftermRelationship(e))
+          .map(e => RefTermRelationship(e))
       })
 
     return items

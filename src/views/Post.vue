@@ -16,7 +16,6 @@ const getItem = async () => {
 
   try {
     const data = await GetOnePost(ID)
-    console.log("🚀 ~ getItem ~ data:", data)
 
     item.value = data
   } catch (error) {

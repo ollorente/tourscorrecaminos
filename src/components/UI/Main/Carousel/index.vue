@@ -9,6 +9,8 @@
         aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2"
         aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="3"
+        aria-label="Slide 4"></button>
     </div>
     <div class="carousel-inner" style="height: 400px;">
       <div class="carousel-item active">
@@ -19,6 +21,9 @@
       </div>
       <div class="carousel-item">
         <img src="/img/kitchen_adventurer_donut.jpg" class="d-block w-100 aspect-video object-fit-cover" alt="Foto 3">
+      </div>
+      <div class="carousel-item">
+        <img src="/img/kitchen_adventurer_lemon.jpg" class="d-block w-100 aspect-video object-fit-cover" alt="Foto 4">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators"
