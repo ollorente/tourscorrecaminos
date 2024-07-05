@@ -36,7 +36,7 @@ const links = [
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
     <div class="offcanvas-header bg-green">
       <h5 class="offcanvas-title text-white text-uppercase fs-3 fw-bold" id="offcanvasLabel">Tours Correcaminos</h5>
-      <button type="button" class="btn-close" style="fill: #fff;" a-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <button type="button" class="btn-close text-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
