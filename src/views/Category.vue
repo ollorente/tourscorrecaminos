@@ -34,7 +34,7 @@ onMounted(() => getItems())
   <div class="mb-4 slice-top">
     <UIMain :error="Error" :isError="isError" :isLoading="isLoading" title="Categoría" class="main-height">
       <div class="row">
-        <div v-for="item in items" :key="item.id" class="col-12 col-md-6">
+        <div v-for="item in items" :key="item.id" class="col-12 col-md-4">
           <UIMainCard :item="item" />
         </div>
       </div>
